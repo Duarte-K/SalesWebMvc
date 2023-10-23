@@ -1,13 +1,14 @@
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Data;
+using SalesWebMvc.Services;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SalesWebMvcContext>(options => options.UseMySql(builder.Configuration.GetConnectionString("SalesWebMvcContext"),ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("SalesWebMvcContext"))));
 
 builder.Services.AddScoped<SeedingService>();
-//builder.Services.AddScoped<SellerService>();
+builder.Services.AddScoped<SellerService>();
 //builder.Services.AddScoped<DepartmentService>();
 //builder.Services.AddScoped<SalesRecordService>();
 
